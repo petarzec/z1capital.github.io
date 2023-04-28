@@ -7,70 +7,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <style>
-      body {
-        background-color: #F2F2F2;
-      }
-
-      img {
-        display: block;
-        margin: 0 auto;
-        max-width: 300px;
-        height: auto;
-      }
-
-      .calc {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-      }
-
-      input[type="number"]::-webkit-inner-spin-button,
-      input[type="number"]::-webkit-outer-spin-button,
-      input[type="number"]::-webkit-input-placeholder {
-        -webkit-appearance: none;
-      }
-
-      input[type="number"] {
-        -moz-appearance: textfield;
-        appearance: textfield;
-      }
-
+.calc,.center,img{margin:0 auto}body,button{font-family:Avenir,sans-serif}body{background-color:#f2f2f2}img{display:block;max-width:300px;height:auto}.calc{text-align:left}.center{display:table;border-style:solid;padding:10px}input[type=number]::-webkit-inner-spin-button,input[type=number]::-webkit-input-placeholder,input[type=number]::-webkit-outer-spin-button{-webkit-appearance:none}input[type=number]{-moz-appearance:textfield;appearance:textfield}button{padding:10px;background-color:#64bca8;color:#fff;border:none;border-radius:5px;box-shadow:2px 2px 2px rgba(0,0,0,.3)}button:hover{background-color:#4d9e88;cursor:pointer}button:active{box-shadow:none;transform:translateY(2px)}
     </style>
-
-  </head>
-
+ </head>
+  
   <body>
     <img src="https://cdn.shopify.com/s/files/1/1596/8601/files/z1_transparent-01.png" alt="Z1 Capital">
+    <center><h3>Profit Calculator</h3></center>
+<div class="center">
 
-    <script>
-      $(function() {
-        $('.slider').on('input change', function() {
-          $(this).next($('.slider_label')).html(this.value);
-        });
-        $('.slider_label').each(function() {
-          var value = $(this).prev().attr('value');
-          $(this).html(value);
-        });
-      });
-
-      function calc() {
-        var n1 = parseFloat(document.getElementById('n1').value);
-        var n2 = parseFloat(document.getElementById('n2').value);
-        var n3 = parseFloat(document.getElementById('n3').value);
-        var n4 = parseFloat(document.getElementById('n4').value);
-
-        var n4a = n4 / 100;
-        var r3 = document.getElementById('result3').value = (n1 / n3).toFixed(2);
-        var r5 = document.getElementById('result5').value = (r3 * n4a).toFixed(2);
-        var r1 = document.getElementById('result1').value = (n1 - ((n2) + (n3 * r5))).toFixed(2);
-        var r2 = document.getElementById('result2').value = ((r1 / n1) * 100).toFixed(2);
-        var r4 = document.getElementById('result4').value = (r1 / n3).toFixed(2);
-        var r6 = document.getElementById('result6').value = (n2 / n3).toFixed(2);
-      }
-
-    </script>
-
-    <div style="calc">
+    <div class="calc">
+      
       <p>Revenue: <input type="number" id="n1" /></p>
       <p>Ad Spend: <input type="number" id="n2" /></p>
       <p>Number of Orders: <input type="number" id="n3" /></p>
@@ -79,16 +26,41 @@
         <input type="range" style="width: 200px" name="weight" id="n4" class="slider" min="0" max="100" value="25">
         <span class="slider_label"></span>%
       </p>
-      <br>
-      <p><button onclick="calc();" style="width: 200px;">Calculate</button></p><br>
+      
+      <p><center><button id="calculateBtn" style="width: 200px;">Calculate</button></center></p>
       <p>Net Profit: <input type="number" id="result1" /></p>
-      <p>Net Margin: <input type="number" id="result2" />%</p>
+      <p>Net Margin: <input type="number" id="result2" /> %</p>
       <p>Average Order Value: <input type="number" id="result3" /></p>
       <p>Average Order Profit: <input type="number" id="result4" /></p>
       <p>Average Order Cost: <input type="number" id="result5" /></p>
       <p>Ad Spend per Order: <input type="number" id="result6" /></p>
     </div>
+  </div>
 
+    <script type="text/javascript">
+var calculateBtn = document.getElementById('calculateBtn');
+calculateBtn.addEventListener('click', function() {
+  var n1 = parseFloat(document.getElementById('n1').value);
+  var n2 = parseFloat(document.getElementById('n2').value);
+  var n3 = parseFloat(document.getElementById('n3').value);
+  var n4 = parseFloat(document.getElementById('n4').value) / 100;
+
+  var r3 = (n1 / n3).toFixed(2);
+  var r5 = (r3 * n4).toFixed(2);
+  var r1 = (n1 - (n2 + (n3 * r5))).toFixed(2);
+  var r2 = ((r1 / n1) * 100).toFixed(2);
+  var r4 = (r1 / n3).toFixed(2);
+  var r6 = (n2 / n3).toFixed(2);
+
+  document.getElementById('result1').value = r1;
+  document.getElementById('result2').value = r2;
+  document.getElementById('result3').value = r3;
+  document.getElementById('result4').value = r4;
+  document.getElementById('result5').value = r5;
+  document.getElementById('result6').value = r6;
+});
+    </script>
   </body>
 
 </html>
+
