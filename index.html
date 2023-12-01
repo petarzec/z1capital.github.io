@@ -1,78 +1,12 @@
 <!DOCTYPE html>
 <html>
-
-  <head>
-    <title>Z1 Capital</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link type="text/css" rel="stylesheet" href="style.css" />
-
-
- </head>
-  
-  <body>
-    <img src="https://cdn.shopify.com/s/files/1/1596/8601/files/z1_transparent-01.png" alt="Z1 Capital">
-    <center><h3>Profit Calculator</h3></center>
-<div class="center">
-
-    <div class="calc">
-      
-      <p>Revenue: <input type="number" id="n1" /></p>
-      <p>Ad Spend: <input type="number" id="n2" /></p>
-      <p>Number of Orders: <input type="number" id="n3" /></p>
-      <p>
-        <p>
-  <label for="range_weight">Margin: </label>
-  <input type="range" style="width: 200px" name="weight" id="n4" class="slider" min="0" max="100" value="25">
-  <span class="slider_label">25%</span>
-</p>
-
-<script type="text/javascript">
-  var slider = document.getElementById("n4");
-  var label = document.querySelector(".slider_label");
-  
-  slider.addEventListener("input", function() {
-    label.textContent = this.value + "%";
-  });
-</script>
-
-
-      </p>
-      
-      <p><center><button id="calculateBtn" style="width: 200px;">Calculate</button></center></p>
-      <p>Net Profit: <input type="number" id="result1" /></p>
-      <p>Net Margin: <input type="number" id="result2" /> %</p>
-      <p>Average Order Value: <input type="number" id="result3" /></p>
-      <p>Average Order Profit: <input type="number" id="result4" /></p>
-      <p>Average Order Cost: <input type="number" id="result5" /></p>
-      <p>Ad Spend per Order: <input type="number" id="result6" /></p>
-    </div>
-  </div>
-
-    <script type="text/javascript">
-var calculateBtn = document.getElementById('calculateBtn');
-calculateBtn.addEventListener('click', function() {
-  var n1 = parseFloat(document.getElementById('n1').value);
-  var n2 = parseFloat(document.getElementById('n2').value);
-  var n3 = parseFloat(document.getElementById('n3').value);
-  var n4 = parseFloat(document.getElementById('n4').value) / 100;
-
-  var r3 = (n1 / n3).toFixed(2);
-  var r5 = (r3 * n4).toFixed(2);
-  var r1 = (n1 - (n2 + (n3 * r5))).toFixed(2);
-  var r2 = ((r1 / n1) * 100).toFixed(2);
-  var r4 = (r1 / n3).toFixed(2);
-  var r6 = (n2 / n3).toFixed(2);
-
-  document.getElementById('result1').value = r1;
-  document.getElementById('result2').value = r2;
-  document.getElementById('result3').value = r3;
-  document.getElementById('result4').value = r4;
-  document.getElementById('result5').value = r5;
-  document.getElementById('result6').value = r6;
-});
-    </script>
-  </body>
-
+<head>
+  <title>Z1 Capital</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link type="text/css" rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Your webpage content goes here -->
+</body>
 </html>
-
